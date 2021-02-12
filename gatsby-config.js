@@ -48,7 +48,7 @@ module.exports = {
       {
         name: 'Languages & Frameworks',
         description:
-          'JavaScript (ES6+), Golang, Node.js, Express.js, React, Ruby on Rails, PHP',
+          'HTML, CSS, JavaScript (ES6+), Node.js, Express.js, Restify, React, Vue, TailwindCSS',
       },
       {
         name: 'Databases',
