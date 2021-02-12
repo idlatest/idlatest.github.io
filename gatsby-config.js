@@ -7,9 +7,9 @@ module.exports = {
     // Main Site Title
     title: `Idongesit Ntuk | Web Developer`,
     // Description that goes under your name in main bio
-    description: `Web Developer based in Calabar, Nigeria.`,
+    description: `Web Developer based in Cross River, Nigeria.`,
     // Optional: Twitter account handle
-    author: `@idlatest`,
+    author: `idlatest`,
     // Optional: Github account URL
     github: `https://github.com/idlatest`,
     // Optional: LinkedIn account URL
@@ -28,8 +28,13 @@ module.exports = {
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
     experience: [
       {
-        name: 'Xeedom Technologies Limited',
-        description: 'Web Developer, September 2014 - December 2016',
+        name: 'Dual Sight Limited',
+        description: 'Web Developer, October 2019 - Present',
+        link: 'https://github.com/idlatest',
+      },
+      {
+        name: 'EET Information Solutions',
+        description: 'Web Developer, May 2019 - September 2019',
         link: 'https://github.com/idlatest',
       },
       {
@@ -38,21 +43,35 @@ module.exports = {
         link: 'https://github.com/idlatest',
       },
       {
-        name: 'Dual Sight Limited',
-        description: 'Web Developer, May 2019 - Present',
+        name: 'Efficient Information Institute',
+        description: 'Instructor, May 2017 - April 2018',
+        link: 'https://github.com/idlatest',
+      },
+      {
+        name: 'Xeedom Technologies Limited',
+        description: 'Web Developer, September 2014 - December 2016',
         link: 'https://github.com/idlatest',
       },
     ],
     // Optional: List your skills, they must have `name` and `description`.
     skills: [
       {
-        name: 'Languages & Frameworks',
+        name: 'Languages',
         description:
-          'HTML, CSS, JavaScript (ES6+), Node.js, Express.js, Restify, React, Vue, TailwindCSS',
+          'HTML, CSS, JavaScript (ES6+)',
+      },
+      {
+        name: 'Frameworks',
+        description:
+          'Bootstrap, TailwindCSS, React, Vue, NodeJS',
       },
       {
         name: 'Databases',
-        description: 'MongoDB, PostreSQL, MySQL',
+        description: 'MongoDB, PostgreSQL, MySQL',
+      },
+      {
+        name: 'Cloud Platform',
+        description: 'Digital Ocean and AWS',
       },
       {
         name: 'Other',
