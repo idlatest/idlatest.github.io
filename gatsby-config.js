@@ -22,7 +22,7 @@ module.exports = {
         name: 'Pincode',
         description:
           'A ReactJS + SCSS based real-estate platform + Backend built with NodeJS and MySQL',
-        // link: 'https://github.com/RyanFitzgerald/devfolio',
+        link: 'https://github.com/idlatest',
       },
     ],
     // Optional: List your experience, they must have `name` and `description`. `link` is optional.
@@ -30,17 +30,17 @@ module.exports = {
       {
         name: 'Xeedom Technologies Limited',
         description: 'Web Developer, September 2014 - December 2016',
-        // link: 'https://github.com/RyanFitzgerald/devfolio',
+        link: 'https://github.com/idlatest',
       },
       {
         name: 'Bolenum Exchange',
         description: 'Web Developer, September 2018 - April 2019',
-        // link: 'https://github.com/RyanFitzgerald/devfolio',
+        link: 'https://github.com/idlatest',
       },
       {
         name: 'Dual Sight Limited',
         description: 'Web Developer, May 2019 - Present',
-        // link: 'https://github.com/RyanFitzgerald/devfolio',
+        link: 'https://github.com/idlatest',
       },
     ],
     // Optional: List your skills, they must have `name` and `description`.
