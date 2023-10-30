@@ -1,0 +1,29 @@
+
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import BlogPost from '../../components/BlogPost.astro'
+import Pagination from '../../components/Pagination.astro'
+
+export async function getStaticPaths({ paginate }) {
+const allPosts = await getCollection('posts', ({ data }) => {
+  return import.meta.env.PROD ? data.isDraft != true : true
+})
+const recentPosts = allPosts.sort((a,b) => new Date(b.data.publishDate) - new Date(a.data.publishDate));
+
+  return paginate( recentPosts, { pageSize: 10 })
+}
+
+const pageTitle = "My Astro Learning Blog"
+
+const { page } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+<h1 class="text-5xl text-slate-900 font-bold leading-tight dark:text-white lg:max-w-md">Blog</h1>
+    <ul>
+      {page.data.map((post) => <BlogPost post={post} />)}
+    </ul>
+  <Pagination page={page} />
+</BaseLayout>

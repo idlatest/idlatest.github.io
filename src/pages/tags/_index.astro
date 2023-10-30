@@ -1,0 +1,19 @@
+---
+import {getCollection} from 'astro:content'
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('posts', ({ data }) => {
+  return import.meta.env.PROD ? data.isDraft != true : true
+})
+
+const uniqueTags = [...new Set(allPosts.map(post => post.data.tags).flat())];
+const pageTitle = 'Tag Index'
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="flex justify-center items-center gap-2 text-sm">
+    {uniqueTags.map(tag => <div><a href={`/tags/${tag}`}><span class='text-blue-600'>#</span>{tag}</a></p>)}
+  </div>
+</BaseLayout>
+

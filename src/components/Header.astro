@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets'
+
+import Navigation from './Navigation.astro';
+import ThemeIcon from './ThemeIcon.astro';
+import Socials from './Socials.astro'
+
+import logo from '../images/icon.png'
+---
+
+<header class="flex items-center justify-between">
+  <a href="/">
+<Image src={logo} alt="website logo" class="w-10 h-10" />
+  </a>
+  <div class="flex justify-center items-center gap-6">
+  <Navigation />
+<ThemeIcon />
+  </div>
+</header>

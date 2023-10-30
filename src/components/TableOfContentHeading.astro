@@ -1,0 +1,12 @@
+---
+const {heading} = Astro.props;
+---
+
+<li class="grid gap-3">
+  <a href={'#' + heading.slug} class="inline-flex items-center">{heading.text}</a>
+  {heading.children.length > 0 && (
+    <ul class="pl-8 grid gap-3">
+      {heading.children.map(child => <Astro.self heading={child} />)}
+    </ul>
+  )}
+</li>

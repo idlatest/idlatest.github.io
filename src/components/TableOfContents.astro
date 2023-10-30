@@ -1,0 +1,137 @@
+---
+import type { MarkdownHeading } from 'astro'
+import TableOfContentHeading from './TableOfContentHeading.astro'
+
+export interface TocItem extends MarkdownHeading {
+  children: TocItem[]
+}
+
+const { headings } = Astro.props
+
+function buildToc(headings: MarkdownHeading[]) {
+  const toc: TocItem[] = []
+  const parentHeadings = new Map();
+
+  headings.forEach(h => {
+    const heading: TocItem = { ...h, children: []}
+
+    parentHeadings.set(heading.depth, heading)
+
+    if(heading.depth === 2) {
+      toc.push(heading)
+    } else {
+      parentHeadings.get(heading.depth - 1).children.push(heading)
+    }
+  })
+
+  return toc;
+}
+
+const toc = buildToc(headings)
+---
+
+<nav class="hidden lg:block pt-20 sticky top-0 toc w-1/4 text-slate-600 dark:text-slate-300 font-bold">
+  <ul class="grid gap-3 pl-3">
+    {toc.map(heading => <TableOfContentHeading heading={heading}/>)}
+  </ul>
+<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      class="toc-marker text-blue-500 duration-300 stroke-current transition-all"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-dashoffset="1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    ></path>
+  </svg>
+</nav>
+
+<script is:inline>
+const linkStarts = new WeakMap()
+const linkEnds = new WeakMap()
+
+function drawPath() {
+  const path = document.querySelector('path.toc-marker')
+  const links = Array.from(document.querySelectorAll('nav.toc a'))
+  if(!links.length) return;
+
+  let pathData = []
+  let left = 0
+
+  links.forEach((link, linkIndex) => {
+    const x = link.offsetLeft - 10
+    const y = link.offsetTop
+    const height = link.offsetHeight
+
+    if(linkIndex === 0) {
+      linkStarts.set(link, 0)
+      pathData.push('M', x, y, 'L', x, y + height)
+    } else {
+      if (left !== x) pathData.push('L', left, y - 5)
+
+      pathData.push('L', x, y - 5)
+
+      path.setAttribute('d', pathData.join(' '))
+
+      linkStarts.set(link, path.getTotalLength())
+      pathData.push('L', x, y + height)
+    }
+
+    left = x
+
+    path.setAttribute('d', pathData.join(' '))
+
+    linkEnds.set(link, path.getTotalLength())
+  })
+}
+
+
+function updatePath() {
+  const path = document.querySelector('path.toc-marker');
+  const pathLength = path.getTotalLength()
+  const activeLinks = document.querySelectorAll('nav.toc a.text-blue-500')
+
+  let linkStart = pathLength
+  let linkEnd = 0
+
+  activeLinks.forEach((link) => {
+    linkStart = Math.min(linkStart, linkStarts.get(link))
+    linkEnd = Math.max(linkEnd, linkEnds.get(link))
+  })
+
+  if(path) {
+    path.style.display = activeLinks.length ? 'inline' : 'none'
+    path.setAttribute('stroke-dasharray', `1 ${linkStart} ${linkEnd - linkStart} ${pathLength}`)
+  }
+}
+
+function addIntersectionObserver() {
+  const observer = new IntersectionObserver((sections) => {
+    sections.forEach((section) => {
+      const heading = section.target
+      if (!heading) return;
+
+      const id = heading.getAttribute('id')
+
+      const link = document.querySelector(`nav.toc li a[href="#${id}"]`)
+      if (!link) return;
+
+      const addRemove = section.intersectionRatio > 0 ? 'add' : 'remove'
+      link.classList[addRemove]('text-blue-500')
+    })
+
+    updatePath()
+  })
+
+document.querySelectorAll('article h2, h3, h4, h5').forEach((section) => {
+  observer.observe(section)
+})
+}
+
+
+setTimeout(() => {
+  drawPath()
+}, 1000)
+addIntersectionObserver()
+</script>

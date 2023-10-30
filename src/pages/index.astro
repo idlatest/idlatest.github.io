@@ -1,0 +1,176 @@
+---
+import {Image} from 'astro:assets';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RecentPosts from '../components/RecentPosts.astro'
+
+import profileImage from '../images/profile.jpg'
+
+const name = "Idongesit Ntuk"
+const description = "Web Developer based in Cross River, Nigeria."
+
+
+const pageTitle = "Homepage"
+---
+
+    <BaseLayout pageTitle={pageTitle}>
+
+  <div class="block md:flex">
+
+<div>
+        <a href="/">
+          <Image class="rounded-full border-4 border-slate-200 dark:border-slate-700 transform transition-all duration-150 hover:scale-105 w-32 h-32 object-cover" src={profileImage} alt={name} />
+        </a>
+      </div>
+      <div class="flex-none pt-6 md:pt-0 md:flex-1 md:pl-20">
+        <h1 class="text-5xl text-slate-900 dark:text-white font-bold leading-tight">
+          {name}
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400">{description}</p>
+<div class="flex items-center gap-4">
+              <a
+                class="inline-block py-2 font-semibold text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white"
+                href={`https://twitter.com/idlatest`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              </a>
+              <a class="inline-block py-2 font-semibold text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white" href={`https://github.com/idlatest`}>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </a>
+              <a class="inline-block py-2 font-semibold text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white" href={`https://linkedin.com/idlatest`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a class="inline-block py-2 font-semibold text-xs text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-white" href={`https://linkedin.com/idlatest`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+              </a>
+</div>
+      <div class="mt-6">
+        <p class="flex-none text-lg text-slate-600 dark:text-slate-300 font-light md:flex-1">
+
+I'm a motivated full-stack web developer who has experience building and scaling web applications and services in various domains. I love working with startups, working in high impact environments, and helping growing development teams build great products.
+      </p>
+      </div>
+
+      </div>
+  </div>
+
+<div class="pt-12">
+      <div class="font-xs font-light tracking-widest text-sm text-slate-600 dark:text-slate-300 leading-normal uppercase">Project</div>
+
+      <div class="mt-6">
+        <h3 class="font-semibold text-slate-900 dark:text-white text-2xl pb-1">Pincode</h3>
+        <p class="text-md text-slate-600 dark:text-slate-300 font-light">
+A ReactJS + SCSS based real-estate platform + Backend built with NodeJS and MySQL
+      </p>
+      </div>
+  </div>
+
+<RecentPosts />
+
+
+{/*
+<div class="block pt-12 md:flex">
+    <div class="pb-6 md:w-full md:max-w-[150px] md:p-0">
+      <div class="font-xs font-light tracking-widest text-sm text-gray-600 leading-normal uppercase">experience</div>
+    </div>
+    <div class="flex-none text-lg text-gray-600 font-light md:flex-1 md:pl-20">
+
+      <div class="mb-6">
+        <h3 class="font-semibold text-gray-900 pb-1">dual sight limited</h3>
+        <p class="text-md text-gray-600 font-light">
+web developer, october 2019 - present
+      </p>
+      </div>
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">eet information solutions</h3>
+        <p class="text-md text-gray-600 font-light">
+web developer, may 2019 - september 2019
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">bolenum exchange</h3>
+        <p class="text-md text-gray-600 font-light">
+          web developer, september 2018 - april 2019
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">efficint information institute</h3>
+        <p class="text-md text-gray-600 font-light">
+instructor, may 2017 - april 2018
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">xeedom technologies limited</h3>
+        <p class="text-md text-gray-600 font-light">
+web developer, september 2014 - december 2016
+      </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="block pt-12 md:flex">
+    <div class="pb-6 md:w-full md:max-w-[150px] md:p-0">
+      <div class="font-xs font-light tracking-widest text-sm text-gray-600 leading-normal uppercase">SKILLS</div>
+    </div>
+    <div class="flex-none text-lg text-gray-600 font-light md:flex-1 md:pl-20">
+
+      <div class="mb-6">
+        <h3 class="font-semibold text-gray-900 pb-1">Languages</h3>
+        <p class="text-md text-gray-600 font-light">
+HTML, CSS, JavaScript (ES6+)
+      </p>
+      </div>
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">Frameworks</h3>
+        <p class="text-md text-gray-600 font-light">
+Bootstrap, TailwindCSS, React, Vue, NodeJS
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">Databases</h3>
+        <p class="text-md text-gray-600 font-light">
+MongoDB, PostgreSQL, MySQL
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">Cloud Platform</h3>
+        <p class="text-md text-gray-600 font-light">
+Digital Ocean and AWS
+      </p>
+      </div>
+
+
+      <div class="mb-6">
+
+        <h3 class="font-semibold text-gray-900 pb-1">Other</h3>
+        <p class="text-md text-gray-600 font-light">
+Docker, Amazon Web Services (AWS), CI / CD, Microservices, API design, Agile / Scrum
+      </p>
+      </div>
+    </div>
+  </div>
+*/}
+
+    </BaseLayout>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro'
+const { frontmatter, headings } = Astro.props;
+
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="lg:max-w-lg mx-auto">
+<div class="text-center text-slate-500 dark:text-slate-400">{frontmatter.publishDate.toISOString().slice(0, 10)}</div>
+    <h1 class="text-center font-bold leading-tight text-5xl text-slate-900 dark:text-white">{frontmatter.title}</h1>
+<p class="text-center text-slate-500 dark:text-slate-400"><em>{frontmatter.description}</em></p>
+  <div class="flex justify-center mt-10 items-center gap-3">
+    {frontmatter.tags.map(tag => <div><a href={`/tags/${tag}/1`} class="text-slate-500 dark:text-slate-400"><span class="text-blue-500 dark:text-blue-400">#</span>{tag}</a></div>)}
+  </div>
+  </div>
+  
+    <div class="aspect-w-16 aspect-h-9 lg:aspect-none">
+<img src={frontmatter.image.src} alt={frontmatter.image.alt} class="w-full h-full object-center object-cover lg:w-full lg:h-full" />
+    </div>
+  <div class="flex items-start">
+  <article class="mr-20 pt-20 prose lg:prose-xl md:prose-lg prose-slate dark:prose-invert">
+<slot />
+    </article>
+  <TableOfContents headings={headings} />
+  </div>
+</BaseLayout>
+

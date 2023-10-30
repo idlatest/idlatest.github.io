@@ -1,0 +1,7 @@
+---
+const { page } = Astro.props
+---
+  <div class="py-4 flex justify-center items-center text-slate-600 dark:text-slate-300 font-bold mt-10 text-lg space-x-6">
+{page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
+{page.url.next ? <a href={page.url.next}>Next</a> : null}
+  </div>
